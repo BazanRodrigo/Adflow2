@@ -199,6 +199,6 @@ def main():
     # start flask app
     #     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=4000)
+    app.run(host='0.0.0.0', debug=False, port=4000)
     #app.run(debug=False)
 #https://medium.com/analytics-vidhya/object-detection-using-yolo-v3-and-deploying-it-on-docker-and-minikube-c1192e81ae7a
