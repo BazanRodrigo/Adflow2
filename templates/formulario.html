@@ -1,4 +1,42 @@
-<form action="/upload" method="POST" enctype="multipart/form-data">
- <input type="file" name="archivo">
- <input type="submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdFlow App - Inicio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/formulario.css') }}">
+</head>
+
+<body>
+  <nav>
+    <h2>Adflow I.A.</h2>
+    <div>
+      <a href="#" class="active">Inicio</a>
+      <a href="#">Refinando</a>
+    </div>
+  </nav>
+  <section>
+    <div class="main-container">
+      <img src="{{ url_for('static', filename='img/adflow_logo.PNG') }}" alt="adflow_logo" width="300" height="75">
+      <div class="text-container">
+        <h1>Bienvenido al portal de creación por I.A.</h1>
+        <p>
+          Crea tu imagen utilizando nuestra herramienta de inteligencia artificial,
+          o sube tu imagen ya creada, después evalúa para saber tu puntaje
+          y sigue las recomendaciones para mejorarla.
+        </p>
+      </div>
+    </div>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <label class="custom-file-upload">
+        <input type="file" name="archivo"/>
+        Sube tu Imagen
+    </label>
+      <input type="submit" value="Evalua y Refina">
+    </form>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  outline: 0;
+  font-family: sans-serif;
+  max-width: 1280px;
+}
+
+nav {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav h2 {
+  margin: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+nav div a {
+  margin: 1rem;
+  text-decoration: none;
+  color: #888;
+}
+
+.active {
+  color: #222;
+  font-weight: 600;
+}
+
+.logo {
+  margin: 2rem auto;
+  display: block;
+  margin-top: 5rem;
+}
+
+.title {
+  font-size: 32px;
+  text-align: center;
+  font-weight: 700;
+  margin: 2rem;
+}
+
+.description {
+  font-size: 22px;
+  margin: 2rem auto;
+  margin-bottom: 6rem;
+}
+
+.image-output {
+  display: block;
+  margin: 2rem auto;
+  max-height: 1080px;
+}
+
+#lista-Datos {
+  border-radius: 2rem;
+  border: 1px solid #ccc;
+}
+
+#lista-Datos tr:nth-child(1) {
+  background-color:rgb(83, 206, 194);
+  color: #fff;
+  letter-spacing: 1.45px;
+  font-size: 16px;
+}
+
+a:hover {
+  text-decoration: none;
+}
