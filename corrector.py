@@ -54,7 +54,7 @@ def my_autocorrect(input_word):
 
 #print(my_autocorrect('personal'))
 
-def extract_text(img_path, lng, mod, quant):
+def extract_text(img_path, lng, mod, quant, diccionario, file):
     # load image
     or_img = Image.open(img_path)
     # image transformation
@@ -72,7 +72,11 @@ def extract_text(img_path, lng, mod, quant):
     palabras = [line for line in palabras if line.strip()]
     print(palabras)
     corregidas = []
-    for palabra in palabras:
-        corregidas.append(my_autocorrect(palabra))
-    print(corregidas)
-    return palabra, palabras, corregidas
+    corregida = ''
+    for palabra in palabras:        
+        corregida += str(palabra)+' '    
+    diccionario['Extraido'] = palabras
+    diccionario['Corregidas'] = corregida  
+    with open(file, 'w') as json_file:
+        json.dump(diccionario, json_file, indent=4 ,ensure_ascii=False) 
+    return palabra, palabras, corregida

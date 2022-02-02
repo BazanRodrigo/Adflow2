@@ -7,6 +7,7 @@ import io
 from PIL import Image
 import cv2
 from corrector import extract_text
+from paletronic import study_image
 
 # construct the argument parse and parse the arguments
 #sudo apt-get install libhunspell-dev
@@ -152,7 +153,7 @@ def get_predection(image,net,LABELS,COLORS):
     cadenaNichos = ''
     cadenaNichos = cadenaNichos.join(predictionNichos)            
     diccionario["Datos Extraidos"][0] = str(predictionNichos)
-    out_txt, ext, corr = extract_text(imgOut, 'eng', 'L', 2)        
+    out_txt, ext, corr = extract_text(imgOut, 'eng', 'L', 2, diccionario, get_time()[0])        
     
     return image, cadenaNichos,ext, corr
 
@@ -186,7 +187,8 @@ def main():
         filename = secure_filename(f.filename)
         # Guardamos el archivo en el directorio
         f.save(imgIn)
-        # Retornamos una respuesta satisfactoria        
+        # Retornamos una respuesta satisfactoria     
+        study_image(imgIn)   
         img = Image.open(imgIn)
         npimg=np.array(img)
         image=npimg.copy()
@@ -199,6 +201,6 @@ def main():
     # start flask app
     #     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False, port=4000, ssl_context="adhoc")
+    app.run(host='0.0.0.0', debug=True, port=4000, ssl_context="adhoc")
     #app.run(debug=False)
 #https://medium.com/analytics-vidhya/object-detection-using-yolo-v3-and-deploying-it-on-docker-and-minikube-c1192e81ae7a
