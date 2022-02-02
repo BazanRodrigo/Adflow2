@@ -55,17 +55,20 @@ def get_time():
     file = tiempo + '.json'
     imagen = tiempo + '.jpg'
     imagenOut = tiempo + '.png'
+    paletaOut = 'paleta'+tiempo +'.png'
     txtOut = os.path.join('static/Outputs' , file)
     imgOut = os.path.join('static/Outputs', imagenOut)
+    paletOut = os.path.join('static/Outputs', paletaOut)
     txtIn = os.path.join('Inputs' , file)
     imgIn = os.path.join('Inputs', imagen)
-    datos = [txtOut, imgOut, txtIn, imgIn]
+    datos = [txtOut, imgOut, txtIn, imgIn, paletOut]
     return datos
 
 txtOut = get_time()[0]
 imgOut = get_time()[1]
 io = imgOut
 imgIn =  get_time()[3]
+paletOut = get_time()[4]
 
 def get_predection(image,net,LABELS,COLORS):    
     f = open(txtOut,'w')
@@ -194,8 +197,12 @@ def main():
         image=npimg.copy()
         image=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
         res, cadenaN,ext, corr, =get_predection(image,nets,Lables,Colors)
-        imgOut = '../' + io        
-    return render_template('fetch.html', nicho=cadenaN, TextoExtraido=ext, TextoSugerido=corr, img=imgOut)
+        po = '../' + paletOut
+        imgOut = '../' + io      
+        print(po,'esa fue la po, esta es la io' ,imgOut)
+        
+    return render_template('fetch.html', nicho=cadenaN, 
+    TextoExtraido=ext, TextoSugerido=corr, img=imgOut, po=po)
     
 
     # start flask app
