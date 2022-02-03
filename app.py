@@ -198,11 +198,12 @@ def main():
         image=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
         res, cadenaN,ext, corr, =get_predection(image,nets,Lables,Colors)
         po = '../' + paletOut
-        imgOut = '../' + io      
-        print(po,'esa fue la po, esta es la io' ,imgOut)
+        imgOut = '../' + io              
+        print('Se detectaron ', len(corr), ' palabras')
         
     return render_template('fetch.html', nicho=cadenaN, 
-    TextoExtraido=ext, TextoSugerido=corr, img=imgOut, po=po)
+    TextoExtraido=ext, TextoSugerido=corr, img=imgOut, po=po,
+    npalabras = len(corr))
     
 
     # start flask app
