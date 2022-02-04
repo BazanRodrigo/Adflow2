@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AdFlow App - Inicio</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/formulario.css') }}">
+  <!--
+    <link rel="stylesheet" href="../static/css/formulario.css">
+  -->
 </head>
 
 <body>
@@ -19,7 +22,11 @@
   </nav>
   <section>
     <div class="main-container">
+      
       <img src="{{ url_for('static', filename='img/adflow_logo.PNG') }}" alt="adflow_logo" width="300" height="75">
+      <!--
+      <img src="../static/img/adflow_logo.PNG" alt="adflow_logo" width="300" height="75">
+      -->
       <div class="text-container">
         <h1>Bienvenido al portal de creación por I.A.</h1>
         <p>
@@ -30,13 +37,21 @@
       </div>
     </div>
     <form action="/upload" method="POST" enctype="multipart/form-data">
-      <label class="custom-file-upload">
-        <input type="file" name="archivo"/>
+      <label class="custom-file-upload" id="FileField">
+        <input type="file" name="archivo" id="FileUploaded" hidden/>
         Sube tu Imagen
     </label>
-      <input type="submit" value="Evalua y Refina">
+      <input id="submitInput" type="submit" value="Evalua y Refina" />
     </form>
+    <div id="content-loader">
+      <div id="loader"></div>
+    </div>
+    <span id="labelFileUploaded"></span>
   </section>
+  <!--
+    <script src="../static/js/formulario.js"></script>
+  -->
+  <script src="{{ url_for('static', filename='js/formulario.js') }}"></script>
 </body>
 
 </html>
