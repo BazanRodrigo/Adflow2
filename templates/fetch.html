@@ -54,11 +54,11 @@
         </div>
       </div>
     </div>
-    <h1>anuncio analizado</h1>
+    <h2>anuncio analizado</h2>
     <img src="{{ img }}" alt="Anuncio analizado" class="d-flex justify-content-center mx-5 image-output shadow p-3 mb-5 bg-white rounded">
     <h1>Paleta de colores del anuncio</h1>
     <img src="{{ po }}" alt="Paleta del anuncio" class="d-flex justify-content-center mx-5 image-output shadow p-3 mb-5 bg-white rounded">
-    <h1>Se detectaron {{npalabras}} palabras <br> Los mejores anuncios contienen hasta 45 palabras <br> consideralo</h1>
+    <h3>Se detectaron {{npalabras}} palabras <br> Los mejores anuncios contienen hasta 45 palabras <br> consideralo</h3>
   </section>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -69,8 +69,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="{{ url_for('static', filename='js/fetch.js') }}"></script>
-
 </body>
 
 </html>
