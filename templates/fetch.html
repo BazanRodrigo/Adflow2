@@ -9,6 +9,9 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>AdFlow App - Fetching</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/fetch.css') }}">
+  <!--
+  <link rel="stylesheet" href="../static/css/fetch.css">
+  -->
 </head>
 
 <body>
@@ -21,6 +24,9 @@
   </nav>
   <section>
     <img src="{{ url_for('static', filename='img/adflow_logo.PNG') }}" alt="adflow_logo" width="300" height="75" class="logo">
+  <!--
+    <img src="../static/img/adflow_logo.PNG" alt="adflow_logo" width="300" height="75" class="logo">
+  -->
     <div class="container">
       <h1 class="title">Refina tu Imagen</h1>
       <p class="description">
@@ -32,7 +38,7 @@
     <div class="container">
       <div class="row mt-3">
         <div class="col">
-          <h2 class="text-center mb-5">Listado de datos</h2>
+          <h2 class="text-center mb-5 text-gray">Listado de datos</h2>
           <div class="my-3">
             <table class="table table-customized shadow-sm p-3 mb-5 bg-white rounded" id="lista-Datos">
               <thead>
@@ -53,12 +59,17 @@
           </div>
         </div>
       </div>
+      <div>
+        <h2 class="title-ad">Anuncio analizado</h2>
+        <img src="{{ img }}" alt="Anuncio analizado"
+          class="d-flex justify-content-center image-output shadow p-3 mb-5 bg-white rounded">
+        <h3 class="title-pallete">Paleta de colores del anuncio</h3>
+        <img src="{{ po }}" alt="Paleta del anuncio"
+          class="d-flex justify-content-center image-output shadow p-3 mb-5 bg-white rounded">
+        <h3 class="suggestions-text">Se detectaron {{npalabras}} palabras <br> Los mejores anuncios contienen hasta 45 palabras <br>
+          consideralo</h3>
+      </div>
     </div>
-    <h2>anuncio analizado</h2>
-    <img src="{{ img }}" alt="Anuncio analizado" class="d-flex justify-content-center mx-5 image-output shadow p-3 mb-5 bg-white rounded">
-    <h1>Paleta de colores del anuncio</h1>
-    <img src="{{ po }}" alt="Paleta del anuncio" class="d-flex justify-content-center mx-5 image-output shadow p-3 mb-5 bg-white rounded">
-    <h3>Se detectaron {{npalabras}} palabras <br> Los mejores anuncios contienen hasta 45 palabras <br> consideralo</h3>
   </section>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
