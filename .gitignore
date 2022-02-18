@@ -1,3 +1,4 @@
 adflowXyolo/AdFlow.weights
 src/
-__pycache__
+__pycache__/
+adflow-env
