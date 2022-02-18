@@ -56,7 +56,6 @@ nav div a {
 .text-container p {
   font-size: 18px;
   letter-spacing: 2px;
-  line-height: 1.6;
 }
 
 form {
@@ -77,9 +76,10 @@ form {
   background-color:rgb(83, 206, 194);
   text-align: center;
   cursor: pointer;
-  min-width: 200px;
-  max-width: 200px;
-  max-height: 68.8px;
+}
+
+input[type=file] {
+  display: none;
 }
 
 form input, form button {
@@ -92,51 +92,6 @@ form input, form button {
   background-color:rgb(83, 206, 194);
   text-align: center;
   cursor: pointer;
-  min-width: 200px;
-  max-width: 200px;
-  max-height: 68.8px;
-}
-
-#labelFileUploaded {
-  margin: 1rem 0;
-  display: block;
-  text-align: center;
-  width: 100%;
-  color: #888;
-  font-weight: 500;
-  letter-spacing: 1.15px;
-}
-
-#content-loader {
-  position: absolute;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #0003;
-}
-
-#loader {
-  display: none;
-  pointer-events: none;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 6px solid transparent;
-  border-top-color:rgba(89, 220, 207, 0.898);
-  animation: loading 1s ease infinite;
-}
-
-@keyframes loading {
-  0% {
-    transform: rotate(0turn);
-  }
-  100% {
-    transform: rotate(1turn);
-  }
 }
 
 a:hover {

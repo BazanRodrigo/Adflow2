@@ -53,5 +53,3 @@ def overlay_palette(img, color_palette, nameImgToSave):
   #plt.imshow(color_palette, interpolation='nearest')  
   plt.axis('off')
   plt.subplots_adjust(wspace=0, hspace=0, bottom=0)    
-
-study_image('abogado.jpg')

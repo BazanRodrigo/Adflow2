@@ -160,8 +160,6 @@ def get_predection(image,net,LABELS,COLORS):
     
     return image, cadenaNichos,ext, corr
 
-
-
 Lables=get_labels(labelsPath)   
 nets=load_model(cfgpath,wpath)
 Colors=get_colors(Lables)
@@ -198,8 +196,9 @@ def main():
         image=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
         res, cadenaN,ext, corr, =get_predection(image,nets,Lables,Colors)
         po = '../' + paletOut
-        imgOut = '../' + io              
+        imgOut = '../' + io                      
         print('Se detectaron ', len(corr), ' palabras')
+        #print(app.config["ENV"])
         
     return render_template('fetch.html', nicho=cadenaN, 
     TextoExtraido=ext, TextoSugerido=corr, img=imgOut, po=po,
@@ -209,6 +208,6 @@ def main():
     # start flask app
     #     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False, port=8080, ssl_context="adhoc")
+    app.run(debug=True)
     #app.run(debug=False)
 #https://medium.com/analytics-vidhya/object-detection-using-yolo-v3-and-deploying-it-on-docker-and-minikube-c1192e81ae7a
