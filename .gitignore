@@ -2,3 +2,6 @@ adflowXyolo/AdFlow.weights
 src/
 __pycache__/
 adflow-env/
+000-default.conf
+app.wsgi
+app.yml
