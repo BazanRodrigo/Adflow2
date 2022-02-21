@@ -208,5 +208,5 @@ def main():
     # start flask app
     #     
 if __name__ == '__main__':
-    app.run(debug=False, ssl_context='adhoc')    
+    app.run(debug=False, ssl_context='adhoc',port=int(os.environ.get("PORT",8080)))
 #https://medium.com/analytics-vidhya/object-detection-using-yolo-v3-and-deploying-it-on-docker-and-minikube-c1192e81ae7a
