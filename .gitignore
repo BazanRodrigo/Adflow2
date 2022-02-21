@@ -5,3 +5,4 @@ adflow-env/
 000-default.conf
 app.wsgi
 app.yml
+Inputs/
