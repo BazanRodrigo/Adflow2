@@ -86,7 +86,6 @@ def get_predection(image,net,LABELS,COLORS):
     net.setInput(blob)
     start = time.time()
     layerOutputs = net.forward(ln)
-    #print(layerOutputs)
     end = time.time()
 
     # show timing information on YOLO
@@ -196,13 +195,12 @@ def main():
         image=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
         res, cadenaN,ext, corr, =get_predection(image,nets,Lables,Colors)
         po = '../' + paletOut
-        imgOut = '../' + io                      
-        print('Se detectaron ', len(corr), ' palabras')
-        #print(app.config["ENV"])
+        imgOut = '../' + io           
+        print('Se detectaron ', len(corr.split()), ' palabras')
         
     return render_template('fetch.html', nicho=cadenaN, 
     TextoExtraido=ext, TextoSugerido=corr, img=imgOut, po=po,
-    npalabras = len(corr))
+    npalabras = len(corr.split()))
     
 
     # start flask app

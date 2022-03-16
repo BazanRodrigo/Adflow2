@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 import json
 import re
 from collections import Counter
-
  
 words = [] 
  
@@ -39,7 +38,7 @@ def my_autocorrect(input_word):
     input_word = input_word.lower()
  
     if input_word in V:
-        return(input_word)
+        return(input_word, 0)
     else:
         try:
             similarities = [1-(textdistance.Jaccard(qval=2).distance(v,input_word)) for v in word_freq_dict.keys()]
@@ -50,9 +49,7 @@ def my_autocorrect(input_word):
             output.reset_index(inplace=True, drop=True)
         except :
             return ''
-        return(output.iloc[0]['Word'])
-
-#print(my_autocorrect('personal'))
+        return(output.iloc[0]['Word'], 1)
 
 def extract_text(img_path, lng, mod, quant, diccionario, file):
     # load image
@@ -73,8 +70,30 @@ def extract_text(img_path, lng, mod, quant, diccionario, file):
     print(palabras)
     corregidas = []
     corregida = ''
+    palabrasCorregidasIng=0
     for palabra in palabras:        
-        corregida += str(palabra)+' '    
+        corregida += str(my_autocorrect(str(palabra))[0])+' '    
+        palabrasCorregidasIng += int(my_autocorrect(str(palabra))[1])
+    if palabrasCorregidasIng < 3:
+        palabrasCorregidasEsp = 0
+        with open('espaniol.txt', 'r') as f:
+            file_name_data = f.read()
+            file_name_data=file_name_data.lower()
+            words = re.findall('\w+',file_name_data)
+        V = set(words)
+        for palabra in palabras:        
+            corregida += str(my_autocorrect(str(palabra))[0])+' '    
+            palabrasCorregidasEsp += int(my_autocorrect(str(palabra))[1])
+        
+        if palabrasCorregidasIng < palabrasCorregidasEsp:
+            with open('ingles.txt', 'r') as f:
+                file_name_data = f.read()
+                file_name_data=file_name_data.lower()
+                words = re.findall('\w+',file_name_data)
+            V = set(words)
+            for palabra in palabras:        
+                corregida += str(my_autocorrect(str(palabra))[0])+' '    
+                palabrasCorregidas += int(my_autocorrect(str(palabra))[1])
     diccionario['Extraido'] = palabras
     diccionario['Corregidas'] = corregida  
     with open(file, 'w') as json_file:
