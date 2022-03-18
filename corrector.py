@@ -51,6 +51,35 @@ def my_autocorrect(input_word):
             return ''
         return(output.iloc[0]['Word'], 1)
 
+def autocorrect(palabras):
+    corregida =''
+    palabrasCorregidasIng = 0
+    for palabra in palabras:        
+        corregida += str(my_autocorrect(str(palabra))[0])+' '    
+        palabrasCorregidasIng += int(my_autocorrect(str(palabra))[1])
+    if palabrasCorregidasIng < 3:
+        corregida =''
+        palabrasCorregidasEsp = 0
+        with open('espaniol.txt', 'r') as f:
+            file_name_data = f.read()
+            file_name_data=file_name_data.lower()
+            words = re.findall('\w+',file_name_data)
+        V = set(words)
+        for palabra in palabras:        
+            corregida += str(my_autocorrect(str(palabra))[0])+' '    
+            palabrasCorregidasEsp += int(my_autocorrect(str(palabra))[1])
+        
+        if palabrasCorregidasIng < palabrasCorregidasEsp:
+            corregida =''
+            with open('ingles.txt', 'r') as f:
+                file_name_data = f.read()
+                file_name_data=file_name_data.lower()
+                words = re.findall('\w+',file_name_data)
+            V = set(words)
+            for palabra in palabras:        
+                corregida += str(my_autocorrect(str(palabra))[0])+' '                    
+    return corregida
+
 def extract_text(img_path, lng, mod, quant, diccionario, file):
     # load image
     or_img = Image.open(img_path)

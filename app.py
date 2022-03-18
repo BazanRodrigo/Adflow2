@@ -8,6 +8,13 @@ from PIL import Image
 import cv2
 from corrector import extract_text
 from paletronic import study_image
+from extractorText import recognize_text
+from corrector import autocorrect
+import easyocr
+
+reader = easyocr.Reader(['en'])
+textFinal = []
+
 
 # construct the argument parse and parse the arguments
 #sudo apt-get install libhunspell-dev
@@ -15,6 +22,7 @@ from paletronic import study_image
 
 predictionNichos = []
 ext = ''
+reader = easyocr.Reader(['en'])
 corr = ''
 diccionario = {'Datos Extraidos':[{'Nichos':'', 'Texto Extraido':'', 'Texto Sugerido':''}]}
 labelsPath="adflowXyolo/obj.names"
@@ -156,6 +164,17 @@ def get_predection(image,net,LABELS,COLORS):
     cadenaNichos = cadenaNichos.join(predictionNichos)            
     diccionario["Datos Extraidos"][0] = str(predictionNichos)
     out_txt, ext, corr = extract_text(imgOut, 'eng', 'L', 2, diccionario, get_time()[0])        
+    texts = reader.readtext(image)
+    prueba = ''
+    for text in texts:
+      textFinal.append(text[1])
+      prueba += str(text[1]) + ' '
+    
+    ext = prueba.split()
+    corr = autocorrect(ext)
+    palabras = ''
+    for palabra in corr:
+        palabras += str(palabra)
     
     return image, cadenaNichos,ext, corr
 
@@ -193,14 +212,14 @@ def main():
         npimg=np.array(img)
         image=npimg.copy()
         image=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-        res, cadenaN,ext, corr, =get_predection(image,nets,Lables,Colors)
+        res, cadenaN,ext, corr =get_predection(image,nets,Lables,Colors)
         po = '../' + paletOut
         imgOut = '../' + io           
         print('Se detectaron ', len(corr.split()), ' palabras')
         
     return render_template('fetch.html', nicho=cadenaN, 
     TextoExtraido=ext, TextoSugerido=corr, img=imgOut, po=po,
-    npalabras = len(corr.split()))
+    npalabras = len(corr.split())+1 )
     
 
     # start flask app
