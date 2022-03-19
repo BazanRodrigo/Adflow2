@@ -8,11 +8,10 @@ from PIL import Image
 import cv2
 from corrector import extract_text
 from paletronic import study_image
-from extractorText import recognize_text
 from corrector import autocorrect
 import easyocr
 
-reader = easyocr.Reader(['en'])
+reader = easyocr.Reader(['en'], gpu=False)
 textFinal = []
 
 
