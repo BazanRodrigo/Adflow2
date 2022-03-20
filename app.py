@@ -170,7 +170,8 @@ def get_predection(image,net,LABELS,COLORS):
       prueba += str(text[1]) + ' '
     
     ext = prueba.split()
-    corr = autocorrect(ext)
+    lenguaje = 1
+    corr = autocorrect(ext, lenguaje)
     palabras = ''
     for palabra in corr:
         palabras += str(palabra)
@@ -218,7 +219,7 @@ def main():
         
     return render_template('fetch.html', nicho=cadenaN, 
     TextoExtraido=ext, TextoSugerido=corr, img=imgOut, po=po,
-    npalabras = len(corr.split())+1 )
+    npalabras = len(corr.split()) )
     
 
     # start flask app
