@@ -227,6 +227,6 @@ def main():
 port = int(os.environ.get('PORT', 8080))
 if __name__ == '__main__':
     #app.run(debug=False,port=int(os.environ.get("PORT",8080)))
-    app.run(threaded=True, host='0.0.0.0', port=port)
+    app.run(threaded=True, host='0.0.0.0', port=port, ssl_context='adhoc')
 
 #https://medium.com/analytics-vidhya/object-detection-using-yolo-v3-and-deploying-it-on-docker-and-minikube-c1192e81ae7a
